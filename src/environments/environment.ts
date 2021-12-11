@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API_URL: 'http://localhost:5000',
+  appShortName: 'LMS',
+  appVersion: '1.0.0',
 };
 
 /*

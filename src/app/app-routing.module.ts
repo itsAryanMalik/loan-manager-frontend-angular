@@ -1,10 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
+/*
+ * Generating Command
+ * ng g c component_name --module=modules/pages/pages.module --skipTests
+ * it will auto update your pages module AKA this module
+ */
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('./modules/layout/layout.module').then((m) => m.LayoutModule),
+  },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'auth',
+    pathMatch: 'full',
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
